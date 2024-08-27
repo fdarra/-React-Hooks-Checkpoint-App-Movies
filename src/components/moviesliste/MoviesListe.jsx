@@ -2,11 +2,19 @@ import React from 'react'
 import MovieCard from '../movieCard/MovieCard'
 
 
-const MoviesListe = ({movies}) => {
+const MoviesListe = ({movies,searchInput,RateInput}) => {
   return (
-    <div>
+    <div style={{display:'flex', justifyContent:'space-around', flexWrap:'wrap'}}>
       
-        {movies.map((movie, key) =>  <MovieCard movie={movie}  key = {movie.id} /> )}
+        {
+
+        
+      movies.filter(movie => movie.title.toLowerCase().includes(searchInput.toLowerCase())
+    && movie.rate >= RateInput
+    )
+        
+    .map((movie, key) =>  <MovieCard movie={movie}  key = {movie.id} /> )
+        }
 
 
 
